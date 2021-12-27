@@ -7,13 +7,14 @@ class booksUser(object):
     rate = ""
     comment = ""
 
-    def __init__(self, id_bookRead, name, author, status,rate,comment):
+    def __init__(self, id_bookRead, name, author, status,rate,comment, genre):
         self.id_book = id_bookRead
         self.name = name
         self.author = author
         self.status = status
         self.rate = rate
         self.comment = comment
+        self.genre = genre
 
     def serialize(self):
         return {
@@ -75,4 +76,38 @@ class bookInfo(object):
             "author": self.author,
             "genre": self.genre,
             "rate": self.rate,
+        }
+
+
+class readUsers(object):
+    id_user = ""
+    fio = ""
+    imageUrl = ""
+    email = ""
+    googleId = ""
+    genre = ""
+    rate = ""
+    comment = ""
+
+    def __init__(self, id_user, fio, imageUrl, email, google_id, genre, rate, comment):
+        self.id_user = id_user
+        self.fio = fio
+        self.imageUrl =imageUrl
+        self.email = email
+        self.googleId = google_id
+        self.genre = genre
+        self.rate = rate
+        self.comment = comment
+
+
+    def serialize(self):
+        return {
+            "id_user": self.id_user,
+            "fio": self.fio,
+            "imageUrl": self.imageUrl,
+            "email": self.email,
+            "googleId": self.googleId,
+            "genre": self.genre,
+            "rate": self.rate,
+            "comment": self.comment
         }

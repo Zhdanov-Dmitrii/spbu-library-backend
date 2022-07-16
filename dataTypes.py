@@ -1,5 +1,19 @@
+class genre(object):
+    id_genre = ""
+    genre = ""
+
+    def __init__(self, id_genre, genre):
+        self.genre = genre
+        self.id_genre = id_genre
+
+    def serialize(self):
+        return {
+            "id_genre": self.id_genre,
+            "genre": self.genre
+        }
+
+
 class booksUser(object):
-    id_bookRead = ""
     name = ""
     author = ""
     status = ""
@@ -7,8 +21,8 @@ class booksUser(object):
     rate = ""
     comment = ""
 
-    def __init__(self, id_bookRead, name, author, status,rate,comment, genre):
-        self.id_book = id_bookRead
+    def __init__(self, id_book, name, author, status,rate,comment, genre):
+        self.id_book = id_book
         self.name = name
         self.author = author
         self.status = status
@@ -18,7 +32,7 @@ class booksUser(object):
 
     def serialize(self):
         return {
-            "id_bookRead": self.id_bookRead,
+            "id_book": self.id_book,
             "name": self.name,
             "author": self.author,
             "status": self.status,
@@ -35,14 +49,18 @@ class userInfo(object):
     email = ""
     imageUrl = ""
     genre = ""
+    rule = ""
+    id_rule = ""
 
-    def __init__(self, id_user, fio, imageUrl, email, googleId, genre):
+    def __init__(self, id_user, fio, imageUrl, email, googleId, genre, rule, id_rule):
         self.id_user = id_user
         self.fio = fio
         self.imageUrl = imageUrl
         self.email = email
         self.googleId = googleId
         self.genre = genre
+        self.rule = rule
+        self.id_rule = id_rule
 
     def serialize(self):
         return {
@@ -51,29 +69,34 @@ class userInfo(object):
             "imageUrl": self.imageUrl,
             "email": self.email,
             "googleId": self.googleId,
-            "genre": self.genre
+            "genre": self.genre,
+            "rule": self.rule,
+            "id_rule": self.id_rule
         }
 
 
 class bookInfo(object):
     id_book = ""
     name = ""
-    author = ""
     genre = ""
+    authors = [""]
+    id_authors = [""]
     rate = ""
 
-    def __init__(self, id, name, author, genre, rate):
+    def __init__(self, id, name, genre, authors, id_authors, rate):
         self.id_book = id
         self.name = name
-        self.author = author
+        self.authors = authors.split(', ')
+        self.id_authors = id_authors.split(', ')
         self.genre = genre
-        self.rate= rate
+        self.rate = rate
 
     def serialize(self):
         return {
             "id_book": self.id_book,
             "name": self.name,
-            "author": self.author,
+            "authors": self.authors,
+            "id_authors": self.id_authors,
             "genre": self.genre,
             "rate": self.rate,
         }
